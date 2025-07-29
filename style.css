@@ -6,6 +6,10 @@
     font-family: 'montserratThin';
     src: url(/assets/Montserrat/Montserrat-Light.ttf);
 }
+@font-face {
+    font-family: 'gil';
+    src: url(/assets/gilroy/Gilroy-ExtraBold.ttf);
+}
 *{
     margin: 0;
     padding: 0;
@@ -19,13 +23,23 @@ html , body{
     width: 100%;
 }
 
-#cursor{
-    height: 25px;
-    width: 25px;
+#cursor{    /*That little cursor of green color which is moving with my mouse cursor */
+    height: 20px;
+    width: 20px;
     background-color: #c5ff27;
     border-radius: 50%;
     position: fixed;
     z-index: 99;
+}
+
+#cursor-blur{    /*That little blur behind my main cursor of green color which is moving with my cursor */
+    height: 380px;
+    width: 380px;
+    background-color: #c5ff2733;
+    border-radius: 50%;
+    position: fixed;
+    filter: blur(50px);
+    z-index: 9;
 }
 
 #nav{
@@ -41,14 +55,14 @@ html , body{
     z-index: 99;
 }
 #nav img{
-    height: 100px;
+    height: 100px; /*logo image*/
 }
 #nav h4{
     font-weight: 800 ;
     font-family: 'montserratThin', sans-serif;
     font-size: 14px;
 }
-video{
+video{    /*That video behind the page running in loop*/
     height: 100%;
     width: 100%;
     object-fit:cover;
@@ -70,21 +84,24 @@ video{
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    z-index: 10;
 }
 
-#page1 h1{
+#page1 h1{ /*That main big text*/
     font-size: 120px;
     font-weight: 900;
     position: relative;
+    font-family: sans-serif;
 }
-#page1 h1::before{
+#page1 h1::before{  /*That behind the text stroke of black and green color*/
     text-transform: uppercase;
-    content: "Train. Play. Slay." ;
+    font-family:sans-serif;
+    content: "Train Play Slay" ;
     position: absolute;
     color: black;
-    top: -6px;
-    left: -6px;
-    -webkit-text-stroke: 0.001px #c5ff27;
+    top: -4px;
+    left: -4px;
+    -webkit-text-stroke: 1px #c5ff27bd;
     z-index: -1;
 }
 #page1 h2{
@@ -102,4 +119,41 @@ video{
 #page2{
     height: 100vh;
     width: 100%;
+    z-index: 10;
+}
+#scroller{
+    /* background-color: red; */
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+#scroller::-webkit-scrollbar{
+    display: none;
+}
+#scroller-in{
+    display: inline-block;
+    white-space: nowrap;
+    animation-name: scroll;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+#scroller h4{
+    display: inline-block;
+    font-size: 140px;
+    font-weight: 500;
+    font-family: 'gil', sans-serif;
+    margin-right: 10px;
+    color: transparent;
+    -webkit-text-stroke: 1px #c5ff27;
+}
+
+@keyframes scroll{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateY(-100%);
+    }
 }
